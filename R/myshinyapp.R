@@ -10,8 +10,14 @@ ui <- fluidPage(
 
   fluidRow(
     #App inputs
+    column(width = 8,
+           strong("For paired T-test the sample sizes must be equal."),
+           checkboxInput(inputId = "pairing", label = "Is the data paired?",
+                         value = FALSE)),
+
+
     column (width = 5,
-            h5("Input sample data: x"),
+            strong("Input sample data: x"),
             wellPanel(
 
               #Slidebar for input
@@ -26,7 +32,7 @@ ui <- fluidPage(
 
             ),
 
-            h5("Input samplle data: y"),
+            strong("Input samplle data: y"),
             wellPanel(
 
               #Slidebar for input
@@ -50,7 +56,8 @@ ui <- fluidPage(
             plotOutput(outputId = "boxplot2")
             ),
 
-    h4("T-test results"),
+    column (width = 3,
+            h4("T-test results"),
 
     h5("Statistics:"),
     textOutput(outputId = "statistic"),
@@ -74,8 +81,7 @@ ui <- fluidPage(
     h5("Method:"),
     textOutput(outputId = "method"),
 
-    h5("Data name:"),
-    textOutput(outputId = "dataname"),
+    )
 
 
   )
@@ -108,7 +114,7 @@ server <- function(input,output)
             l1 = rnorm (input$numx, mean = input$mux, sd = input$sdx )
             l2 = rnorm (input$numy, mean = input$muy, sd = input$sdy )
 
-            t_test <- t.test(l1, l2, paired = FALSE, alpha=0.05)
+            t_test <- t.test(l1, l2, paired = input$pairing, alpha=0.05)
 
             t_test$statistic
 
@@ -119,7 +125,7 @@ server <- function(input,output)
             l1 = rnorm (input$numx, mean = input$mux, sd = input$sdx )
             l2 = rnorm (input$numy, mean = input$muy, sd = input$sdy )
 
-            t_test <- t.test(l1, l2, paired = FALSE, alpha=0.05)
+            t_test <- t.test(l1, l2, paired = input$pairing, alpha=0.05)
 
             t_test$parameter
 
@@ -130,7 +136,7 @@ server <- function(input,output)
             l1 = rnorm (input$numx, mean = input$mux, sd = input$sdx )
             l2 = rnorm (input$numy, mean = input$muy, sd = input$sdy )
 
-            t_test <- t.test(l1, l2, paired = FALSE, alpha=0.05)
+            t_test <- t.test(l1, l2, paired = input$pairing, alpha=0.05)
 
             t_test$p.value
 
@@ -141,7 +147,7 @@ server <- function(input,output)
             l1 = rnorm (input$numx, mean = input$mux, sd = input$sdx )
             l2 = rnorm (input$numy, mean = input$muy, sd = input$sdy )
 
-            t_test <- t.test(l1, l2, paired = FALSE, alpha=0.05)
+            t_test <- t.test(l1, l2, paired = input$pairing, alpha=0.05)
 
             t_test$conf.int
 
@@ -152,7 +158,7 @@ server <- function(input,output)
             l1 = rnorm (input$numx, mean = input$mux, sd = input$sdx )
             l2 = rnorm (input$numy, mean = input$muy, sd = input$sdy )
 
-            t_test <- t.test(l1, l2, paired = FALSE, alpha=0.05)
+            t_test <- t.test(l1, l2, paired = input$pairing, alpha=0.05)
 
             t_test$estimate
 
@@ -164,7 +170,7 @@ server <- function(input,output)
             l1 = rnorm (input$numx, mean = input$mux, sd = input$sdx )
             l2 = rnorm (input$numy, mean = input$muy, sd = input$sdy )
 
-            t_test <- t.test(l1, l2, paired = FALSE, alpha=0.05)
+            t_test <- t.test(l1, l2, paired = input$pairing, alpha=0.05)
 
             t_test$alternative
           })
@@ -174,20 +180,11 @@ server <- function(input,output)
             l1 = rnorm (input$numx, mean = input$mux, sd = input$sdx )
             l2 = rnorm (input$numy, mean = input$muy, sd = input$sdy )
 
-            t_test <- t.test(l1, l2, paired = FALSE, alpha=0.05)
+            t_test <- t.test(l1, l2, paired = input$pairing, alpha=0.05)
 
             t_test$method
           })
 
-          output$dataname <- renderText({
-            set.seed(32)
-            l1 = rnorm (input$numx, mean = input$mux, sd = input$sdx )
-            l2 = rnorm (input$numy, mean = input$muy, sd = input$sdy )
-
-            t_test <- t.test(l1, l2, paired = FALSE, alpha=0.05)
-
-            t_test$data.name
-          })
 
 
 }
