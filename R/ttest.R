@@ -27,7 +27,7 @@
 #'
 #' @examples
 #' myttest(x = rnorm(30,10,12), y = rnorm(40, 7, 10))
-myttest <- function(x, y, paired=FALSE, alpha=0.05){
+ttest <- function(x, y, paired=FALSE, alpha=0.05){
   if(paired == "FALSE"){ #If the samples are not paired then use a t-test.
     vt = var.test(x,y)
 

@@ -2,4 +2,4 @@
 
 export(mydata)
 export(myplot)
-export(myttest)
+export(ttest)
