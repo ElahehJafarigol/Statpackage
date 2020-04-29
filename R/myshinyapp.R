@@ -48,7 +48,10 @@ ui <- fluidPage(
     column (width = 5,
             h5("Box plot"),
             plotOutput(outputId = "boxplot2")
-    )
+    ),
+
+    h5("T-test results"),
+    textOutput(outputId = "results")
   )
 
 )
@@ -75,6 +78,11 @@ server <- function(input,output)
             title <- ("Sample data of population 2")
             boxplot(y, main = title, col = "dark red")
          })
+
+          output$results <- renderText({
+            "Hello"
+          })
+
 
 }
 
