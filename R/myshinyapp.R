@@ -42,8 +42,13 @@ ui <- fluidPage(
     #App outputs
     column (width = 5,
             h5("Box plot"),
-            plotOutput(outputId = "boxplot")
-            )
+            plotOutput(outputId = "boxplot1")
+            ),
+
+    column (width = 5,
+            h5("Box plot"),
+            plotOutput(outputId = "boxplot2")
+    )
   )
 
 )
@@ -52,59 +57,26 @@ ui <- fluidPage(
 
 server <- function(input,output)
 {
-  output$boxplot <- renderPlot({
-    set.seed(32)
-    x = rnorm (input$numx, mean = input$mux, sd = input$sdx )
-    #y = rnorm (input$numy, mean = input$muy, sd = input$sdy )
+         output$boxplot1 <- renderPlot({
+           set.seed(32)
+           x = rnorm (input$numx, mean = input$mux, sd = input$sdx )
+           #y = rnorm (input$numy, mean = input$muy, sd = input$sdy )
 
-    title <- ("Sample data of population 1")
-    boxplot(x, main = title, col = "dark blue")
+           title <- ("Sample data of population 1")
+           boxplot(x, main = title, col = "dark blue")
 
-  })
-}
+         })
 
-server <- function(input,output){
-  output$boxplot <- renderPlot({
-    set.seed(32)
-    #x = rnorm (input$numx, mean = input$mux, sd = input$sdx )
-    y = rnorm (input$numy, mean = input$muy, sd = input$sdy )
+          output$boxplot2 <- renderPlot({
+            set.seed(32)
+            #x = rnorm (input$numx, mean = input$mux, sd = input$sdx )
+            y = rnorm (input$numy, mean = input$muy, sd = input$sdy )
 
-    title <- ("Sample data of population 2")
-    boxplot(y, main = title, col = "dark red")
+            title <- ("Sample data of population 2")
+            boxplot(y, main = title, col = "dark red")
+         })
 
-  })
 }
 
 
 shinyApp(ui=ui, server=server)
-
-# ui <- fluidPage(
-#
-#   #App title
-#   titlePanel("Descriptive and Inferential Statistics"),
-#
-#   #Slidebar for input
-#   sliderInput( inputId = "num", label = "Choose the sample size:",
-#                value = 25, min = 0, max = 100),
-#   sliderInput( inputId = "mu", label = "Choose the sample mean:",
-#                value = 5, min = 0, max = 10),
-#   sliderInput( inputId = "sd", label = "Choose the sample standard deviation:",
-#                value = 5, min = 0, max = 20),
-#   checkboxInput(inputId = "pairing", label = "Is the data paired?",
-#                 value = FALSE),
-#
-#   plotOutput(outputId = "boxplot1")
-# )
-#
-# server <- function(input, output) {
-#
-#   output$boxplot1 <- renderPlot ({
-#     #Generate sample data
-#
-#     title <- "Sample data of population 1"
-#     boxplot(set.seed(32), rnorm (input$num, input$mu, input$sd), main = title, col = "dark blue") })
-#
-#
-# }
-#
-# shinyApp(ui=ui, server=server)
