@@ -1,12 +1,11 @@
 Package: Statpackage
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Descripitve and Inferential Statistic
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Elaheh Jafarigol
+Maintainer: Elaheh Jafarigol <elaheh.jafarigol@ou.edu>
+Description: This package is used for creating sample data visualize and performing t-test on the data.
+License: MIT
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.0
