@@ -48,10 +48,36 @@ ui <- fluidPage(
     column (width = 5,
             h5("Box plot"),
             plotOutput(outputId = "boxplot2")
-    ),
+            ),
 
-    h5("T-test results"),
-    textOutput(outputId = "results")
+    h4("T-test results"),
+
+    h5("Statistics:"),
+    textOutput(outputId = "statistic"),
+
+    h5("Parameter:"),
+    textOutput(outputId = "parameter"),
+
+    h5("P value:"),
+    textOutput(outputId = "pvalue"),
+
+    h5("Condifence interval:"),
+    textOutput(outputId = "conf"),
+
+    h5("Estimate:"),
+    textOutput(outputId = "estimate"),
+
+
+    h5("Alternative mathod:"),
+    textOutput(outputId = "alternative"),
+
+    h5("Method:"),
+    textOutput(outputId = "method"),
+
+    h5("Data name:"),
+    textOutput(outputId = "dataname"),
+
+
   )
 
 )
@@ -77,17 +103,90 @@ server <- function(input,output)
             boxplot(y, main = title, col = "dark red")
          })
 
-          output$results <- renderText({
-            #set.seed(32)
-            #l1 <- is.numeric( rnorm (input$numx, mean = input$mux, sd = input$sdx ))
-            #l2 <- is.numeric( rnorm (input$numy, mean = input$muy, sd = input$sdy ))
-            l1 = is.numeric_version(x)
-            l2 = is.numeric_version(y)
-            myT <- ttest(l1, l2, paired = FALSE, alpha=0.05)
+          output$statistic <- renderText({
+            set.seed(32)
+            l1 = rnorm (input$numx, mean = input$mux, sd = input$sdx )
+            l2 = rnorm (input$numy, mean = input$muy, sd = input$sdy )
+
+            t_test <- t.test(l1, l2, paired = FALSE, alpha=0.05)
+
+            t_test$statistic
+
+          })
+
+          output$parameter <- renderText({
+            set.seed(32)
+            l1 = rnorm (input$numx, mean = input$mux, sd = input$sdx )
+            l2 = rnorm (input$numy, mean = input$muy, sd = input$sdy )
+
+            t_test <- t.test(l1, l2, paired = FALSE, alpha=0.05)
+
+            t_test$parameter
+
+          })
+
+          output$pvalue <- renderText({
+            set.seed(32)
+            l1 = rnorm (input$numx, mean = input$mux, sd = input$sdx )
+            l2 = rnorm (input$numy, mean = input$muy, sd = input$sdy )
+
+            t_test <- t.test(l1, l2, paired = FALSE, alpha=0.05)
+
+            t_test$p.value
+
+          })
+
+          output$conf <- renderText({
+            set.seed(32)
+            l1 = rnorm (input$numx, mean = input$mux, sd = input$sdx )
+            l2 = rnorm (input$numy, mean = input$muy, sd = input$sdy )
+
+            t_test <- t.test(l1, l2, paired = FALSE, alpha=0.05)
+
+            t_test$conf.int
+
+          })
+
+          output$estimate <- renderText({
+            set.seed(32)
+            l1 = rnorm (input$numx, mean = input$mux, sd = input$sdx )
+            l2 = rnorm (input$numy, mean = input$muy, sd = input$sdy )
+
+            t_test <- t.test(l1, l2, paired = FALSE, alpha=0.05)
+
+            t_test$estimate
+
+          })
 
 
-            mydf <- list("t test" = myT$ttype, "p value" = round(myT$ttest$p.value,4),
-                         "alpha" = round(1-attr(myT$ttest$conf.int, "conf.level"),4), "reject" = myT$reject)
+          output$alternative <- renderText({
+            set.seed(32)
+            l1 = rnorm (input$numx, mean = input$mux, sd = input$sdx )
+            l2 = rnorm (input$numy, mean = input$muy, sd = input$sdy )
+
+            t_test <- t.test(l1, l2, paired = FALSE, alpha=0.05)
+
+            t_test$alternative
+          })
+
+          output$method <- renderText({
+            set.seed(32)
+            l1 = rnorm (input$numx, mean = input$mux, sd = input$sdx )
+            l2 = rnorm (input$numy, mean = input$muy, sd = input$sdy )
+
+            t_test <- t.test(l1, l2, paired = FALSE, alpha=0.05)
+
+            t_test$method
+          })
+
+          output$dataname <- renderText({
+            set.seed(32)
+            l1 = rnorm (input$numx, mean = input$mux, sd = input$sdx )
+            l2 = rnorm (input$numy, mean = input$muy, sd = input$sdy )
+
+            t_test <- t.test(l1, l2, paired = FALSE, alpha=0.05)
+
+            t_test$data.name
           })
 
 
