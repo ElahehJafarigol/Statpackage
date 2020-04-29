@@ -6,6 +6,7 @@
 #' @return 2 plots, for sample one and two
 #' @export
 #'
+#'
 #' @examples
 #' x = rnorm(30,10,12); y = rnorm(40,20,15); plot(x,y)
 myplot <- function(x, y){
