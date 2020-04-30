@@ -2,7 +2,11 @@
 % Please edit documentation in R/datasummary.R
 \name{mydata}
 \alias{mydata}
-\title{A function for descriptive statistics}
+\title{A function for descriptive statistics
+The first step after creating the data or reading data from an csv file is descriptive analysis.
+This function provides the user with information such as mean, standard deviation, and etc.
+x = rnorm (n, mean, sd)
+y = rnorm (m, mean, sd)}
 \usage{
 mydata(x)
 }
@@ -14,6 +18,10 @@ The function returns mean,median,25th and 75th quartiles,min,max
 }
 \description{
 A function for descriptive statistics
+The first step after creating the data or reading data from an csv file is descriptive analysis.
+This function provides the user with information such as mean, standard deviation, and etc.
+x = rnorm (n, mean, sd)
+y = rnorm (m, mean, sd)
 }
 \examples{
 mydata(x = rnorm (20,5,10))

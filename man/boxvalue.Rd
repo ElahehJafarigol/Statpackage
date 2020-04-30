@@ -2,7 +2,8 @@
 % Please edit documentation in R/boxvalue.R
 \name{boxvalue}
 \alias{boxvalue}
-\title{The box plot value}
+\title{The box plot value
+This function provides a discription of the box plot.}
 \usage{
 boxvalue(x)
 }
@@ -22,6 +23,7 @@ names: a vector of names for the groups.
 }
 \description{
 The box plot value
+This function provides a discription of the box plot.
 }
 \examples{
 myboxplotvalue (x)

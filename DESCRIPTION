@@ -15,3 +15,7 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+Imports:
+    ggplot2, 
+    vioplot,
+    shiny

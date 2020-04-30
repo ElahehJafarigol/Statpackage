@@ -1,6 +1,8 @@
 #' A function for descriptive statistics
-#'
-#'
+#' The first step after creating the data or reading data from an csv file is descriptive analysis.
+#' This function provides the user with information such as mean, standard deviation, and etc.
+#' x = rnorm (n, mean, sd)
+#' y = rnorm (m, mean, sd)
 #'
 #' @param x vector of sample data from the population
 #'

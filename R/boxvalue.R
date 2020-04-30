@@ -1,4 +1,5 @@
 #' The box plot value
+#' This function provides a discription of the box plot.
 #'
 #' @param x vector of sample data from population 1
 #'
