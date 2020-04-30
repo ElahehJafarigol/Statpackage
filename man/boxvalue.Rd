@@ -26,5 +26,5 @@ The box plot value
 This function provides a discription of the box plot.
 }
 \examples{
-myboxplotvalue (x)
+ x = rnorm(30,10,12); boxvalue (x)
 }

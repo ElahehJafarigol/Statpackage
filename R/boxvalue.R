@@ -17,7 +17,7 @@
 #' @export
 #'
 #' @examples
-#' myboxplotvalue (x)
+#'  x = rnorm(30,10,12); boxvalue (x)
 boxvalue <- function(x){
   xvalue <- boxplot(x, type = "p", xlab = "Sample Data of population 1",
                     col = "dark red", horizontal = TRUE)
