@@ -18,4 +18,6 @@ VignetteBuilder: knitr
 Imports:
     ggplot2, 
     vioplot,
+    zoo
     shiny
+    
