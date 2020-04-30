@@ -27,7 +27,7 @@
 #'
 #' @examples
 #' myttest(x = rnorm(30,10,12), y = rnorm(40, 7, 10))
-ttest <- function(x, y, paired=FALSE, alpha=0.05){
+myttest <- function(x, y, paired=FALSE, alpha=0.05){
   if(paired == "FALSE"){ #If the samples are not paired then use a t-test.
     vt = var.test(x,y)
 
@@ -54,7 +54,7 @@ ttest <- function(x, y, paired=FALSE, alpha=0.05){
   v = rep(c("x","y"), c(length(x),length(y))) # Creation of qual var
   df = data.frame(data=data, v=v)
   lst=list(ttest=tt, df=df, paired = paired)
-  class(lst) <- "mytt" #New class
-  print (lst)
+  class(Rttest) <- "mytt" #New class
+  print (Rttest)
 
 }

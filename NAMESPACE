@@ -3,5 +3,5 @@
 export()
 export(boxvalue)
 export(mydata)
-export(ttest)
+export(myttest)
 export(violinplot)
