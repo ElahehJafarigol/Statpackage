@@ -1,5 +1,6 @@
 #' A function to plot x, y
 #' This plot, shows the distribution, mean and standard deviation of the data in seperate box plots.
+#' importFrom("graphics", "boxplot", "par")
 #'
 #'
 #' @param x vector of sample data from population 1

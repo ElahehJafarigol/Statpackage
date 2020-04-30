@@ -1,4 +1,5 @@
 #' A function for t tests
+#' importFrom("stats", "rnorm", "t.test", "var.test")
 #'
 #'
 #' The constructor function is based on t-test, that evaluates the NUll hypothesis H0.
@@ -53,7 +54,7 @@ myttest <- function(x, y, paired=FALSE, alpha=0.05){
   data = c(x,y)
   v = rep(c("x","y"), c(length(x),length(y))) # Creation of qual var
   df = data.frame(data=data, v=v)
-  lst=list(ttest=tt, df=df, paired = paired)
+  Rttest = list(ttest=tt, df=df, paired = paired)
   class(Rttest) <- "mytt" #New class
   print (Rttest)
 
