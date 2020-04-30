@@ -2,7 +2,8 @@
 % Please edit documentation in R/ttest.R
 \name{myttest}
 \alias{myttest}
-\title{A function for t tests}
+\title{A function for t tests
+importFrom("stats", "rnorm", "t.test", "var.test")}
 \usage{
 myttest(x, y, paired = FALSE, alpha = 0.05)
 }
