@@ -1,6 +1,6 @@
 library(shiny)
-#library(Statpackage)
 library(ggplot2)
+library(vioplot)
 
 #Start the app
 ui <- fluidPage(
@@ -17,7 +17,7 @@ ui <- fluidPage(
 
 
     column (width = 5,
-            strong("Input sample data: x"),
+            strong("Input Sample Data: x"),
             wellPanel(
 
               #Slidebar for input
@@ -32,7 +32,7 @@ ui <- fluidPage(
 
             ),
 
-            strong("Input samplle data: y"),
+            strong("Input Sample Data: y"),
             wellPanel(
 
               #Slidebar for input
@@ -46,6 +46,7 @@ ui <- fluidPage(
                            value = 5, min = 1, max = 20)
             )),
     #App outputs
+
     column (width = 5,
             h5("Box plot"),
             plotOutput(outputId = "boxplot1")
@@ -56,31 +57,35 @@ ui <- fluidPage(
             plotOutput(outputId = "boxplot2")
             ),
 
-    column (width = 3,
+    column (width = 5,
             h4("T-test results"),
 
-    h5("Statistics:"),
+    strong("Statistics:"),
     textOutput(outputId = "statistic"),
 
-    h5("Parameter:"),
+    strong("Parameter:"),
     textOutput(outputId = "parameter"),
 
-    h5("P value:"),
+    strong("P-value:"),
     textOutput(outputId = "pvalue"),
 
-    h5("Condifence interval:"),
+    strong("Confidence Interval:"),
     textOutput(outputId = "conf"),
 
-    h5("Estimate:"),
+    strong("Estimate:"),
     textOutput(outputId = "estimate"),
 
-
-    h5("Alternative mathod:"),
-    textOutput(outputId = "alternative"),
-
-    h5("Method:"),
+    strong("Method:"),
     textOutput(outputId = "method"),
 
+    strong("Alternative Method:"),
+    textOutput(outputId = "alternative"),
+
+    ),
+
+    column (width = 5,
+            h5("Violin Plot"),
+            plotOutput(outputId = "violin")
     )
 
 
@@ -92,22 +97,15 @@ ui <- fluidPage(
 
 server <- function(input,output)
 {
-         output$boxplot1 <- renderPlot({
-           set.seed(32)
-           x = rnorm (input$numx, mean = input$mux, sd = input$sdx )
+         output$violin <- renderPlot({
+          set.seed(32)
+          x = rnorm (input$numx, mean = input$mux, sd = input$sdx )
+          y = rnorm (input$numy, mean = input$muy, sd = input$sdy )
 
-           title <- ("Sample data of population 1")
-           boxplot(x, main = title, col = "dark blue")
+          title <- ("Violin plot of sample x and y")
+          vioplot(x, y, names=c("Sample x", "Sample y"), main = title, col="gold")
 
-         })
-
-          output$boxplot2 <- renderPlot({
-            set.seed(32)
-            y = rnorm (input$numy, mean = input$muy, sd = input$sdy )
-
-            title <- ("Sample data of population 2")
-            boxplot(y, main = title, col = "dark red")
-         })
+        })
 
           output$statistic <- renderText({
             set.seed(32)
@@ -185,7 +183,22 @@ server <- function(input,output)
             t_test$method
           })
 
+          output$boxplot1 <- renderPlot({
+            set.seed(32)
+            x = rnorm (input$numx, mean = input$mux, sd = input$sdx )
 
+            title <- ("Sample data of population 1")
+            boxplot(x, main = title, col = "dark blue")
+
+          })
+
+          output$boxplot2 <- renderPlot({
+            set.seed(32)
+            y = rnorm (input$numy, mean = input$muy, sd = input$sdy )
+
+            title <- ("Sample data of population 2")
+            boxplot(y, main = title, col = "dark red")
+          })
 
 }
 
