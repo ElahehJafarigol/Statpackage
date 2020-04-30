@@ -54,9 +54,11 @@ myttest <- function(x, y, paired=FALSE, alpha=0.05){
   data = c(x,y)
   v = rep(c("x","y"), c(length(x),length(y))) # Creation of qual var
   df = data.frame(data=data, v=v)
-  lst=list(ttest=tt, df=df, paired = paired)
+  lst=list(ttest=tt, paired = paired)
   class(lst) <- "mytt" #New class
   print (lst)
 
 }
+
+
 
