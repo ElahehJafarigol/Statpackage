@@ -6,7 +6,7 @@
 #' @export
 #'
 #' @examples
-#' shinyapp()
+#' shineyapp()
 shineyapp <- function(){
   shiny::runApp(system.file("app", package="Statpackage"),launch.browser = TRUE)
 }
