@@ -7,7 +7,7 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
 ---
 
-```{r, include = FALSE}
+```{r echo=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 library(Statpackage)
 ```
 
-```{r Data Summery, echo=TRUE}
+```{r Data Summery, echo=FALSE}
 #' A function for descriptive statistics
 #' The first step after creating the data or reading data from an csv file is descriptive analysis.
 #' This function provides the user with information such as mean, standard deviation, and etc.
