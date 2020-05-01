@@ -8,5 +8,5 @@
 #' @examples
 #' shinyapp()
 shineyapp <- function(){
-  shiny::runApp(system.file("shiny", package="Statpackage"),launch.browser = TRUE)
+  shiny::runApp(system.file("app", package="Statpackage"),launch.browser = TRUE)
 }
