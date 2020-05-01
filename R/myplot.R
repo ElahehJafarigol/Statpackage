@@ -11,7 +11,7 @@
 #'
 #'
 #' @examples
-#' x = rnorm(30,10,12); y = rnorm(40,20,15); plot(x,y)
+#' x = rnorm(30,10,12); y = rnorm(40,20,15); myplot(x,y)
 library(ggplot2)
 
 myplot <- function(x, y){

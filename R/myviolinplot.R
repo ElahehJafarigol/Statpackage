@@ -7,11 +7,11 @@
 #' @export
 #'
 #' @examples
-#' x = rnorm(30,10,12); y = rnorm(40,20,15); violinplot(x,y)
+#' x = rnorm(30,10,12); y = rnorm(40,20,15); myviolinplot(x,y)
 #'
 library(vioplot)
 library(zoo)
-violinplot <- function(x, y){
+myviolinplot <- function(x, y){
   title <- ("Violin plot of sample x and y")
   vioplot(x, y, names=c("Sample x", "Sample y"), main = title, col="gold")
 }
